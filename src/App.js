@@ -4,14 +4,21 @@ import SelectTypeForm from "./components/SelectTypeForm";
 import "./styles.css";
 
 export default function App() {
+  const [data, setData] = useState(null);
   const [dataType, setDataType] = useState("");
 
-  const [data, setData] = useState(null);
+  
 
   console.log({ data });
 
-  // Write code here.
-  //
+  useEffect(() => {
+    
+    
+    fetch(`https://swapi.dev/api/${dataType}/`)
+    .then(res => res.json())
+    .then(data => setData(data))
+  }, [dataType])
+  
 
   return (
     <div>
